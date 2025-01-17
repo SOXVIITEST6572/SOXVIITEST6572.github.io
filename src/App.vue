@@ -27,19 +27,21 @@ import Footer from "./components/Footer.vue";
 import RibbonNotice from "./components/RibbonNotice.vue";
 import ToastButton from "./components/ToastButton.vue";
 
-const routes = {
-  "/": PageHome,
-  "/about": PageAbout,
-  "/champions-story": PageChampionsStory,
-  "/technical-tips": PageTT,
-  "/gallery": PageGallery,
-  "/blogs": PageTest,
-  // "/form": PageForm, 
-  // "/admin": PageAdmin,
-  // "/semi": Semi,
-  // "/rules": PageRules,
-  // "/blog2": PageBlog2
-};
+import { RouterView } from 'vue-router'
+
+// const routes = {
+//   "/": PageHome,
+//   "/about": PageAbout,
+//   "/champions-story": PageChampionsStory,
+//   "/technical-tips": PageTT,
+//   "/gallery": PageGallery,
+//   "/blogs": PageTest,
+//   // "/form": PageForm, 
+//   // "/admin": PageAdmin,
+//   // "/semi": Semi,
+//   // "/rules": PageRules,
+//   // "/blog2": PageBlog2
+// };
 
 export default {
   data() {
@@ -65,10 +67,10 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener("hashchange", () => {
-      // TODO pass a reference to the current menu item
-      this.currentPath = window.location.hash;
-    });
+    // window.addEventListener("hashchange", () => {
+    //   // TODO pass a reference to the current menu item
+    //   this.currentPath = window.location.hash;
+    // });
   },
   setup() {
     useSanityClient(
@@ -89,8 +91,8 @@ export default {
   <!-- <AppHeader /> -->
   <RibbonNotice message="Preliminary Round Registrations are Open!!!"></RibbonNotice>
   <Navbar />
-  <component :is="currentView" />
-
+  <!-- <component :is="currentView" /> -->
+  <RouterView></RouterView>
   <!-- <AppFooter /> -->
   <ToastButton href="https://forms.gle/FkeHg1AnZ1LpR32q7" message="Register For SOXVII"/>
   <Footer></Footer>
