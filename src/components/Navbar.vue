@@ -1,28 +1,32 @@
 <script setup>
 import { ref, computed } from 'vue'
 import SOLogo from "./SOLogo.vue";
+import {useRouter} from 'vue-router'
+
+const router = useRouter()
+console.log("Router is setup bruhhhhhhhhhhhhhhhhh", router)
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'About', href: '#about', current: false },
-  { name: "Champion's Story", href: "#champions-story", current: false },
-  { name: 'Technical Tips', href: '#technical-tips', current: false },
-  { name: 'Gallery', href: '#gallery', current: false },
-  // { name: 'Rules & Regulations', href: '#rules', current: false },
-  { name: 'Blogs', href: '#blogs', current: false },
-  // { name: 'Finalists', href: '#semi', current: false },
+  { name: 'Home', href: '/', current: true },
+  { name: 'About', href: 'about', current: false },
+  { name: "Champion's Story", href: "champions-story", current: false },
+  { name: 'Technical Tips', href: 'technical-tips', current: false },
+  { name: 'Gallery', href: 'gallery', current: false },
+  { name: 'Rules & Regulations', href: 'rules', current: false },
+  { name: 'Blogs', href: 'blogs', current: false },
+  // { name: 'Finalists', href: 'semi', current: false },
 ]
 
 // const activeItemIndex = ref(getActiveItem());
 const activeURL = ref("#")
 const mobileMenuOpen = ref(false);
 
-window.addEventListener("hashchange", () => {
-  activeURL.value = window.location.hash
-  if (!activeURL.value) {
-    activeURL.value = "#"
-  }
-});
+// window.addEventListener("hashchange", () => {
+//   activeURL.value = window.location.hash
+//   if (!activeURL.value) {
+//     activeURL.value = "#"
+//   }
+// });
 
 </script>
 
@@ -35,10 +39,10 @@ window.addEventListener("hashchange", () => {
         </div>
         <div class="hidden lg:block ml-auto">
           <div class="flex items-center space-x-4">
-            <a 
+            <button 
               v-for="item in navigation" 
               :key="item.name" 
-              :href="item.href"
+              @click="router.push(item.href)"
               :class="[
                 activeURL === item.href ? 'backdrop-brightness-150' : 'transition duration-200 hover:backdrop-brightness-150',
                 'px-3 py-2 rounded-md text-sm font-semibold text-white'
@@ -46,7 +50,7 @@ window.addEventListener("hashchange", () => {
               :aria-current="activeURL === item.href ? 'page' : undefined"
             >
               {{ item.name }}
-            </a>
+            </button>
           </div>
         </div>
         <div class="lg:hidden">

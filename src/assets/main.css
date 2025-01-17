@@ -17,7 +17,7 @@
   font-weight: normal;
 }
 
-.hidden {
+/* .hidden {
   opacity: 0;
   transform: translateX(-25%);
   transition: all 1s;
@@ -26,7 +26,7 @@
 .animated-show {
   opacity: 1;
   transform: translateX(0);
-}
+} */
 
 /*center any element vertically and horizontally*/
 .center {
