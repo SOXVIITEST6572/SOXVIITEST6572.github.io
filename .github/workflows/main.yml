@@ -1,11 +1,9 @@
-name: Check Build on Pull Request
+name: Check Build
 
 on:
   pull_request:
     branches:
       - main
-    paths:
-      - '**/*'
 
 jobs:
   check-build:
